@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">LetsPartyA</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="fragment_guide">guide</string>
+    <string name="fragment_setting">setting</string>
+    <string name="fragment_search">search</string>
 </resources>
