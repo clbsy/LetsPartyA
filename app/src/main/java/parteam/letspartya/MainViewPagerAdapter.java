@@ -3,6 +3,7 @@ package parteam.letspartya;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
@@ -13,38 +14,32 @@ import java.util.List;
 /**
  * Created by chenlibao on 15-12-17.
  */
-public class MainViewPagerAdapter extends FragmentPagerAdapter {
-    private GuideFragment mGuideF = null;
-    private SettingFragment mSettingF = null;
-    private SearchFragment mSearchF = null;
-    private FragmentManager mFm = null;
+public class MainViewPagerAdapter extends FragmentStatePagerAdapter {
 
-    public MainViewPagerAdapter(FragmentManager fm) {
+    private FragmentManager mFm = null;
+    private List<Fragment> mFragments;
+
+    public MainViewPagerAdapter(FragmentManager fm, List<Fragment> fragments) {
         super(fm);
-        mGuideF = new GuideFragment();
-        mSettingF = new SettingFragment();
-        mSearchF = new SearchFragment();
+        mFm = fm;
+        mFragments = fragments;
     }
     @Override
     public int getCount() {
-        return 3;
+        return mFragments.size();
     }
 
     public Fragment getItem(int arg0) {
-        switch (arg0) {
-            case 0:
-                return mGuideF;
-            case 1:
-                return mSettingF;
-            case 2:
-                return mSearchF;
-            default:
-                break;
-        }
-        return null;
-    }
-    @Override
-    public boolean isViewFromObject(View view, Object object) {
-        return false;
+//        switch (arg0) {
+//            case 0:
+//                return mFragments.get(0);
+//            case 1:
+//                return mFragments.get(1);
+//            case 2:
+//                return mFragments.get(2);
+//            default:
+//                break;
+//        }
+        return mFragments.get(arg0);
     }
 }
