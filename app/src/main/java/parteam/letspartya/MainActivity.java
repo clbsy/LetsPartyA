@@ -1,12 +1,9 @@
 package parteam.letspartya;
 
-import android.net.Uri;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
@@ -34,9 +31,31 @@ public class MainActivity extends FragmentActivity {
     private void init(){
         setContentView(R.layout.activity_main);
         mMainViewPager = (ViewPager)this.findViewById(R.id.main_view_pager);
-        mGuideF = GuideFragment.newInstance(null,null);
-        mSettingF = SettingFragment.newInstance(null,null);
-        mSearchF = SearchFragment.newInstance(null,null);
+        List<Fragment> existsFragments = getSupportFragmentManager().getFragments();
+        if ((null != existsFragments) && (existsFragments.size() > 0)) {
+            for (Fragment fragment : existsFragments) {
+                if (fragment instanceof GuideFragment) {
+                    mGuideF = (GuideFragment) fragment;
+                } else if (fragment instanceof SettingFragment) {
+                    mSettingF = (SettingFragment) fragment;
+                } else if (fragment instanceof SearchFragment) {
+                    mSearchF = (SearchFragment) fragment;
+                }
+            }
+        }
+
+        if (null == mGuideF) {
+            mGuideF = GuideFragment.newInstance();
+        }
+
+        if (null == mSearchF) {
+            mSearchF = SearchFragment.newInstance(null,null);
+        }
+
+        if (null == mSettingF) {
+            mSettingF = SettingFragment.newInstance(null,null);
+        }
+
         List<Fragment> fragments=new ArrayList<Fragment>();
         fragments.add(mGuideF);
         fragments.add(mSettingF);
