@@ -5,30 +5,10 @@
     android:orientation="vertical"
     tools:context="parteam.letspartya.GuideFragment">
 
-    <parteam.letspartya.FixedSizeLayout
+    <parteam.letspartya.widget.SlideRecommendView
+        android:id="@+id/fragment_guide_slide_recommend_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <android.support.v4.view.ViewPager
-            android:id="@+id/guide_recommend_pages"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <LinearLayout
-            android:id="@+id/guide_indicator_parent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingBottom="10dp"
-            android:paddingRight="10dp"
-            android:layout_alignParentBottom="true">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/dot_1"/>
-        </LinearLayout>
-    </parteam.letspartya.FixedSizeLayout>
+        android:layout_height="@dimen/slide_recommend_view_height" />
 
     <ListView
         android:id="@+id/guide_recommend_list"

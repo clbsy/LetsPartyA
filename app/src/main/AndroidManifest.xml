@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="parteam.letspartya" >
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name=".BaseApplication"
         android:allowBackup="true"
@@ -14,6 +16,11 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.WebViewActivity" >
+            <intent-filter>
+                <action android:name="parteam.letspartya.START_WEB_VIEW" />
             </intent-filter>
         </activity>
     </application>

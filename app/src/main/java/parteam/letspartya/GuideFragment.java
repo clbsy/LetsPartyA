@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,24 +12,25 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
-
 import java.util.ArrayList;
+import parteam.letspartya.model.RecommendModel;
+import parteam.letspartya.model.bean.PartyRecommendBean;
+import parteam.letspartya.widget.SlideRecommendView;
 
 public class GuideFragment extends Fragment {
     private static final String TAG = GuideFragment.class.getSimpleName();
 
     private ViewPager mViewPager;
-
     private DisplayImageOptions mImageOptions;
-
     private LinearLayout mIndicatorParent;
-
     private ArrayList<Integer> mData = new ArrayList<>();
     private LoopPageAdapter mPageAdapter;
-
     private RecommendListAdapter mListAdapter;
+
+    private SlideRecommendView mRecommendView;
+    private ArrayList<PartyRecommendBean> mRecommendList;
+    private RecommendModel mRecommendModel;
 
     public static GuideFragment newInstance() {
         GuideFragment fragment = new GuideFragment();
@@ -46,6 +48,11 @@ public class GuideFragment extends Fragment {
         mPageAdapter = new LoopPageAdapter();
         mListAdapter = new RecommendListAdapter();
 
+        mRecommendModel = new RecommendModel(getActivity());
+        mRecommendList = mRecommendModel.getPartyRecommend();
+        Log.e(TAG,"mRecommendList size = " + mRecommendList.size());
+        mRecommendModel.syncPartyRecommendFromNet();
+
         mData.add(R.mipmap.test1);
         mData.add(R.mipmap.test2);
         mData.add(R.mipmap.test3);
@@ -60,21 +67,15 @@ public class GuideFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_guide, container, false);
-        mViewPager = (ViewPager) view.findViewById(R.id.guide_recommend_pages);
-        mViewPager.setAdapter(mPageAdapter);
-        mViewPager.setCurrentItem(2);
-        mViewPager.addOnPageChangeListener(mPageAdapter);
 
-        //TODO Not show now
-        mIndicatorParent = (LinearLayout) view.findViewById(R.id.guide_indicator_parent);
-        for (int i = 0; i < mData.size(); i++) {
-            ImageView dotView = new ImageView(getActivity());
-            dotView.setImageResource(R.mipmap.dot_w);
-            dotView.setLayoutParams(new LinearLayout.LayoutParams(
-                    ViewGroup.LayoutParams.WRAP_CONTENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT));
-            mIndicatorParent.addView(dotView);
-        }
+        mRecommendView = (SlideRecommendView)view.findViewById(R.id.fragment_guide_slide_recommend_view);
+        mRecommendView.setDataList(mRecommendList);
+        mRecommendModel.setRecommendCallback(new RecommendModel.RecommendCallback() {
+            @Override
+            public void onDataChanged(ArrayList<PartyRecommendBean> recommendBeans) {
+                mRecommendView.setDataList(recommendBeans);
+            }
+        });
 
         ListView listView = (ListView) view.findViewById(R.id.guide_recommend_list);
         listView.setAdapter(mListAdapter);
