@@ -1,4 +1,4 @@
-package parteam.letspartya;
+package com.parteam.letspartya;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

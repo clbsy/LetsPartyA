@@ -3,16 +3,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="parteam.letspartya.GuideFragment">
+    tools:context=".ui.GuideFragment">
 
-    <parteam.letspartya.widget.SlideRecommendView
+    <com.parteam.letspartya.ui.widget.SlideRecommendView
         android:id="@+id/fragment_guide_slide_recommend_view"
         android:layout_width="match_parent"
         android:layout_height="@dimen/slide_recommend_view_height" />
 
-    <ListView
+    <GridView
         android:id="@+id/guide_recommend_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:numColumns="2"
         android:layout_marginTop="10dp"/>
 </LinearLayout>

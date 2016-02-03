@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">LetsPartyA</string>
 
-<!-- TODO: Remove or change this placeholder text -->
     <string name="fragment_guide">guide</string>
     <string name="fragment_setting">setting</string>
     <string name="fragment_search">search</string>
+    <string name="title_activity_friend_party_detail">FriendPartyDetailActivity</string>
+    <string name="comment">评论</string>
 </resources>

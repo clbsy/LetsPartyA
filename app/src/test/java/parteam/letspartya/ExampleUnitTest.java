@@ -1,4 +1,4 @@
-package parteam.letspartya;
+package com.parteam.letspartya;
 
 import org.junit.Test;
 

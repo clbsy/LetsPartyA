@@ -1,27 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="parteam.letspartya" >
+    package="com.parteam.letspartya">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".BaseApplication"
+        android:name="com.parteam.letspartya.BaseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" >
-        <activity android:name=".MainActivity" >
+        android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name="com.parteam.letspartya.ui.MainActivity"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.WebViewActivity" >
+        <activity android:name=".ui.WebViewActivity">
             <intent-filter>
-                <action android:name="parteam.letspartya.START_WEB_VIEW" />
+                <action android:name="com.parteam.letspartya.START_WEB_VIEW" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.parteam.letspartya.ui.FriendPartyDetailActivity">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.parteam.letspartya.ui.MainActivity" />
         </activity>
     </application>
 
