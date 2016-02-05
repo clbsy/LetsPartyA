@@ -4,11 +4,11 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class PartyItem implements Serializable {
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -108,7 +108,23 @@ public class PartyItem implements Serializable {
         this.thumbnail = thumbnail;
     }
 
-    int id = -1;
+    public long getFav() {
+        return fav;
+    }
+
+    public void setFav(long fav) {
+        this.fav = fav;
+    }
+
+    public ArrayList<CommentItem> getComments() {
+        return comments;
+    }
+
+    public void setComments(ArrayList<CommentItem> comments) {
+        this.comments = comments;
+    }
+
+    long id = -1;
     private String topical = null;
     private String county = null;
     private String province = null;
@@ -121,4 +137,6 @@ public class PartyItem implements Serializable {
     private ArrayList<String> images;
     private String thumbnail = null;
     private long holderID = -1;
+    private long fav;
+    private ArrayList<CommentItem> comments;
 }

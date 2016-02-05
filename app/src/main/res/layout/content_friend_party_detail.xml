@@ -38,6 +38,7 @@
                 android:layout_weight="1"/>
 
             <TextView
+                android:id="@+id/party_detail_fav"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@mipmap/icon_20x20_fav_press"
@@ -55,5 +56,36 @@
                 android:layout_marginLeft="10dp"
                 android:textSize="@dimen/default_text_size"/>
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/party_detail_comment_edit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="@string/comment_hint"
+                android:textSize="@dimen/default_text_size"/>
+
+            <ImageView
+                android:id="@+id/party_detail_comment_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@android:drawable/ic_input_add"/>
+        </LinearLayout>
+
+        <com.parteam.letspartya.ui.widget.AutoHeightListView
+            android:id="@+id/party_detail_comments_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="#0000"
+            android:listSelector="#00000000"/>
     </LinearLayout>
 </ScrollView>

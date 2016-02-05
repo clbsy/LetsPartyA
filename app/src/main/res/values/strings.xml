@@ -6,4 +6,6 @@
     <string name="fragment_search">search</string>
     <string name="title_activity_friend_party_detail">FriendPartyDetailActivity</string>
     <string name="comment">评论</string>
+    <string name="comment_hint">说点什么</string>
+    <string name="comment_empty">评论内容不能为空!</string>
 </resources>

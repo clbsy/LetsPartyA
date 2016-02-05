@@ -69,7 +69,8 @@ public class GuideFragment extends Fragment implements OnDataFetchedCallback<Par
         mRecommendList = mRecommendModel.getPartyRecommend();
         Log.e(TAG,"mRecommendList size = " + mRecommendList.size());
         mRecommendModel.syncPartyRecommendFromNet();
-        mPartiesModel = new PartiesModel(this);
+        mPartiesModel = new PartiesModel();
+        mPartiesModel.setOnItemDataFetchedCallback(this);
         mPartiesModel.getFriendParties(getActivity());
 
         mData.add(R.mipmap.test1);

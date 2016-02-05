@@ -7,11 +7,10 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.TextView;
 
+import com.parteam.letspartya.R;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import com.parteam.letspartya.R;
-import com.parteam.letspartya.net.NetService;
 
 public class MainActivity extends FragmentActivity {
     private final static String TAG = "MainActivity";
@@ -91,6 +90,5 @@ public class MainActivity extends FragmentActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        NetService.cancelRequest(this);
     }
 }

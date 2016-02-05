@@ -14,6 +14,8 @@ public class NetService {
     private static final String BASE_URL = "http://101.200.142.114:9000";
 
     public static final String FRIEND_PARTIES = "/parties";
+    public static final String UPDATE_FAV = "/update_fav";
+    public static final String UPDATE_COMMENT = "/save_comment";
 
     private static AsyncHttpClient sHttpClient = new AsyncHttpClient();
 
@@ -22,8 +24,8 @@ public class NetService {
         sHttpClient.get(context,requestUrl,params,handler);
     }
 
-    public static void getFriendParties(Context context, RequestParams params, AsyncHttpResponseHandler handler) {
-        sHttpClient.get(context, BASE_URL + FRIEND_PARTIES,params, handler);
+    public static void getData(Context context, String url, RequestParams params, AsyncHttpResponseHandler handler) {
+        sHttpClient.get(context, BASE_URL + url, params, handler);
     }
 
     public static void cancelRequest(Context context) {
